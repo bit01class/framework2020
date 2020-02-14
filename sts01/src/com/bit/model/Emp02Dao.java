@@ -63,7 +63,42 @@ public class Emp02Dao {
 			pstmt.executeUpdate();
 		}
 	}
+	
+	public int updateOne(int sabun,String name,int pay) throws SQLException {
+		String sql="update emp02 set name=?,pay=? where sabun=?";
+		try(
+				Connection conn=dataSource.getConnection();
+				PreparedStatement pstmt=conn.prepareStatement(sql);
+				){
+			pstmt.setString(1, name);
+			pstmt.setInt(2, pay);
+			pstmt.setInt(3, sabun);
+			return pstmt.executeUpdate();
+		}
+	}
+	
+	public int deleteOne(int sabun) throws SQLException {
+		String sql="delete from emp02 where sabun=?";
+		try(
+				Connection conn=dataSource.getConnection();
+				PreparedStatement pstmt=conn.prepareStatement(sql);
+				){
+			pstmt.setInt(1, sabun);
+			return pstmt.executeUpdate();
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

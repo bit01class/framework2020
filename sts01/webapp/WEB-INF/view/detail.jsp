@@ -30,8 +30,8 @@
 		<span>${bean.pay }</span>
 	</div>
 	<div>
-		<a href="edit.bit?sabun=${bean.sabun }">수정</a>
-		<a href="delete.bit?sabun=${bean.sabun }">삭제</a>
+		<a href="edit.bit?sabun=${bean.sabun }">수 정</a>
+		<a href="delete.bit?sabun=${bean.sabun }">삭 제</a>
 	</div>
 </body>
 </html>

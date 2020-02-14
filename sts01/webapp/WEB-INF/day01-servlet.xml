@@ -28,6 +28,15 @@
 	<bean name="/detail.bit" class="com.bit.controller.DetailController">
 		<property name="dao" ref="dao"></property>
 	</bean>
+	<bean name="/edit.bit" class="com.bit.controller.EditController">
+		<property name="dao" ref="dao"></property>
+	</bean>
+	<bean name="/update.bit" class="com.bit.controller.UpdateController">
+		<property name="dao" ref="dao"></property>
+	</bean>
+	<bean name="/delete.bit" class="com.bit.controller.DeleteController">
+		<property name="dao" ref="dao"></property>
+	</bean>
 	
 	<!-- ViewResolver -->
 	<bean id="viewResolver"
