@@ -8,7 +8,12 @@
 		<property name="user" value="scott"/>
 		<property name="password" value="tiger"/>
 	</bean>
-	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="dao2" class="com.bit.model.Emp02Dao2">
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+	</bean>
 	<bean id="dao" class="com.bit.model.Emp02Dao">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
@@ -19,7 +24,7 @@
 	
 	<bean name="/index.bit" class="com.bit.controller.IndexController"></bean>
 	<bean name="/list.bit" class="com.bit.controller.ListController">
-		<property name="dao" ref="dao"/>
+		<property name="dao" ref="dao2"/>
 	</bean>
 	<bean name="/add.bit" class="com.bit.controller.AddController"></bean>
 	<bean name="/insert.bit" class="com.bit.controller.InsertController">

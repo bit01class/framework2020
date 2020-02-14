@@ -9,12 +9,13 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
 import com.bit.model.Emp02Dao;
+import com.bit.model.Emp02Dao2;
 import com.bit.model.entity.Emp02Vo;
 
 public class ListController implements Controller {
-	Emp02Dao dao;
+	Emp02Dao2 dao;
 	
-	public void setDao(Emp02Dao dao) {
+	public void setDao(Emp02Dao2 dao) {
 		this.dao = dao;
 	}
 
