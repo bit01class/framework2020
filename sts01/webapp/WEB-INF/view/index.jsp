@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>index page</h1>
+	<nav>
+		<a href="index.bit">HOME</a>
+		<a href="list.bit">B B S</a>
+		<a href="login.bit">LOGIN</a>
+	</nav>
 </body>
 </html>

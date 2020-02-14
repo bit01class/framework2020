@@ -21,6 +21,13 @@
 	<bean name="/list.bit" class="com.bit.controller.ListController">
 		<property name="dao" ref="dao"/>
 	</bean>
+	<bean name="/add.bit" class="com.bit.controller.AddController"></bean>
+	<bean name="/insert.bit" class="com.bit.controller.InsertController">
+		<property name="dao" ref="dao"></property>
+	</bean>
+	<bean name="/detail.bit" class="com.bit.controller.DetailController">
+		<property name="dao" ref="dao"></property>
+	</bean>
 	
 	<!-- ViewResolver -->
 	<bean id="viewResolver"
