@@ -9,12 +9,16 @@
 		<property name="urlMap">
 			<props>
 				<prop key="/dept/list.bit">dlist</prop>
+				<prop key="/dept/add.bit">dadd</prop>
 			</props>
 		</property>
 	</bean>
 	
 	
 	<bean id="dlist" class="com.bit.controller.DeptListController">
+		<property name="dao" ref="dept01Dao2"></property>
+	</bean>
+	<bean id="dadd" class="com.bit.controller.DeptAddController">
 		<property name="dao" ref="dept01Dao2"></property>
 	</bean>
 	
