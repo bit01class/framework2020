@@ -12,6 +12,9 @@
 <script type="text/javascript" src="/sts02/js/bootstrap.min.js"></script>
 </head>
 <body>
+<c:if test="${param.err ne null }">
+<div class="alert alert-danger" role="alert">${param.err }</div>
+</c:if>
 <!-- modal start -->
 <!-- Button trigger modal -->
 
@@ -66,12 +69,14 @@
 			<th>번호</th>
 			<th>부서명</th>
 			<th>지역</th>
+			<th>삭제</th>
 		</tr>
 		<c:forEach items="${list }" var="bean">
 			<tr>
 				<td>${bean.deptno }</td>
 				<td>${bean.dname }</td>
 				<td>${bean.loc }</td>
+				<td><form action="delete.bit" method="post"><input type="hidden" name="deptno" value="${bean.deptno }"/><button>삭제</button></form></td>
 			</tr>
 		</c:forEach>
 	</table>	

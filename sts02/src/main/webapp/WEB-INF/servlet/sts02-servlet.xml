@@ -10,6 +10,7 @@
 			<props>
 				<prop key="/dept/list.bit">dlist</prop>
 				<prop key="/dept/add.bit">dadd</prop>
+				<prop key="/dept/delete.bit">ddel</prop>
 			</props>
 		</property>
 	</bean>
@@ -19,6 +20,13 @@
 		<property name="dao" ref="dept01Dao2"></property>
 	</bean>
 	<bean id="dadd" class="com.bit.controller.DeptAddController">
+		<property name="supportedMethods" value="POST"></property>
+		<property name="commandClass" value="com.bit.model.entity.Dept01Vo"/>
+		<property name="commandName" value="bean"></property>
+		<property name="dao" ref="dept01Dao2"></property>
+	</bean>
+	<bean id="ddel" class="com.bit.controller.DeptDeleteController">
+		<property name="supportedMethods" value="POST"></property>
 		<property name="dao" ref="dept01Dao2"></property>
 	</bean>
 	
@@ -29,3 +37,14 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 </beans>
+
+
+
+
+
+
+
+
+
+
+
