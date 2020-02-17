@@ -3,15 +3,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="remote" class="com.bit.service.Remote3">
-		<property name="map">
-			<props>
-				<prop key="key1">value1</prop>
-				<prop key="key2">value2</prop>
-				<prop key="key3">value3</prop>
-				<prop key="key4">value4</prop>
-			</props>
-		</property>
+	
+	<bean id="dataSource" 
+	class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/class03"/>
+		<property name="username" value="scott"/>
+		<property name="password" value="tiger"/>
+	</bean>
+	
+	<bean id="dept01Dao" class="com.bit.model.Dept01DaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
 </beans>
