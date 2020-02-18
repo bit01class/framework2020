@@ -34,8 +34,17 @@
 			        <li><a href="/sts02/">HOME</a></li>
 			        <li><a href="/sts02/dept/list.bit">DEPT</a></li>
 			        <li><a href="/sts02/emp/list.bit">E M P</a></li>
+			        <c:if test="${sessionScope.login eq null }">
 			        <li class="active"><a href="/sts02/login.bit">LOGIN</a></li>
+			        </c:if>
+			        <c:if test="${sessionScope.login ne null }">
+			        <li class="active"><a href="/sts02/logout.bit">LOGOUT</a>
+			        </li>
+			        </c:if>
 			    </ul>
+			    <c:if test="${sessionScope.login ne null }">
+			    <p class="navbar-text"> ${login }님 환영합니다 </p>
+			    </c:if>
 		    </div>
 		  </div>
 		</nav>
@@ -45,7 +54,7 @@
   	<div class="col-md-12">
 	<!-- content start -->
 	
-	<form class="form-horizontal" action="result.bit" method="post">
+	<form class="form-horizontal" action="/sts02/result.bit" method="post">
 		<div class="form-group">
 		    <label for="sabun" class="col-sm-2 control-label">sabun</label>
 		    <div class="col-sm-10">

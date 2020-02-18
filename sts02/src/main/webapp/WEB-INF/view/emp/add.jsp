@@ -32,8 +32,17 @@
 			        <li><a href="/sts02/">HOME</a></li>
 			        <li><a href="/sts02/dept/list.bit">DEPT</a></li>
 			        <li class="active"><a href="/sts02/emp/list.bit">E M P</a></li>
+			        <c:if test="${sessionScope.login eq null }">
 			        <li><a href="/sts02/login.bit">LOGIN</a></li>
+			        </c:if>
+			        <c:if test="${sessionScope.login ne null }">
+			        <li><a href="/sts02/logout.bit">LOGOUT</a>
+			        </li>
+			        </c:if>
 			    </ul>
+			    <c:if test="${sessionScope.login ne null }">
+			    <p class="navbar-text"> ${login }님 환영합니다 </p>
+			    </c:if>
 		    </div>
 		  </div>
 		</nav>
