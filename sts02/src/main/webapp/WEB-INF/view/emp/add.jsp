@@ -34,23 +34,39 @@
 <div class="row">
   	<div class="col-md-12">
 	<!-- content start -->
-	<p class="text-right">
-		<a class="btn btn-primary" href="add.bit" role="button">입력</a>
-	</p>
-	<div class="list-group">
-	  <a href="#" class="list-group-item disabled">
-	  	<h4 class="list-group-item-heading">사번 - 이름</h4>
-		<p class="list-group-item-text">날짜</p>
-	  </a>
-	  <c:forEach items="${list }" var="bean">
-	  <a href="#" class="list-group-item">
-	  	<span class="badge">${bean.pay }</span>
-	  	<h4 class="list-group-item-heading">${bean.sabun} - ${bean.name}</h4>
-	  	<fmt:formatDate value="${bean.nalja }" pattern="YYYY/MM/dd hh:mm" var="nal"/>
-		<p class="list-group-item-text">${nal }</p>
-	  </a>
-	  </c:forEach>
-	</div>
+	
+	<form class="form-horizontal">
+		<div class="form-group">
+		    <label for="name" class="col-sm-2 control-label">name</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" name="name" id="name" placeholder="name">
+		    </div>
+		</div>
+		
+		<div class="form-group">
+		    <label for="pay" class="col-sm-2 control-label">pay</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" name="pay" id="pay" placeholder="pay">
+		    </div>
+		</div>
+		
+		<div class="form-group">
+		    <label for="deptno" class="col-sm-2 control-label">deptno</label>
+		    <div class="col-sm-10">
+		      <select name="deptno"  class="form-control">
+		      	<c:forEach items="${list }" var="bean">
+		      	<option value="${bean.deptno }"> ${bean.dname }</option>
+		      	</c:forEach>
+		      </select>
+		    </div>
+		</div>
+		
+		<div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <button type="submit" class="btn btn-default">Sign in</button>
+		    </div>
+		</div>
+	</form>	
 	
 	<!-- content end -->
 	</div>
