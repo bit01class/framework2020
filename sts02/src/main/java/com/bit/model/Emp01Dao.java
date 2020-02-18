@@ -12,4 +12,5 @@ public interface Emp01Dao {
 	void insertOne(Emp01Vo bean) throws SQLException;
 	int updateOne(Emp01Vo bean) throws SQLException;
 	int deleteOne(int num) throws SQLException;
+	boolean loginCheck(int sabun, String name);
 }

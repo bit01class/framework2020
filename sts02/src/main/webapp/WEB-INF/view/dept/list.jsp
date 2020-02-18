@@ -58,6 +58,14 @@
 		        <div>비트교육센터</div>
 		      </a>
 		    </div>
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			    <ul class="nav navbar-nav">
+			        <li><a href="/sts02/">HOME</a></li>
+			        <li class="active"><a href="/sts02/dept/list.bit">DEPT</a></li>
+			        <li><a href="/sts02/emp/list.bit">E M P</a></li>
+			        <li><a href="/sts02/login.bit">LOGIN</a></li>
+			    </ul>
+		    </div>
 		  </div>
 		</nav>
   	</div>

@@ -13,8 +13,10 @@
 <script type="text/javascript" src="/sts02/js/bootstrap.min.js"></script>
 </head>
 <body>
-<c:if test="${param.err ne null }">
-<div class="alert alert-danger" role="alert">${param.err }</div>
+<c:if test="${err ne null }">
+<div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Warning!</strong> ${err }</div>
 </c:if>
 
 <div class="container">
@@ -31,8 +33,8 @@
 			    <ul class="nav navbar-nav">
 			        <li><a href="/sts02/">HOME</a></li>
 			        <li><a href="/sts02/dept/list.bit">DEPT</a></li>
-			        <li class="active"><a href="/sts02/emp/list.bit">E M P</a></li>
-			        <li><a href="/sts02/login.bit">LOGIN</a></li>
+			        <li><a href="/sts02/emp/list.bit">E M P</a></li>
+			        <li class="active"><a href="/sts02/login.bit">LOGIN</a></li>
 			    </ul>
 		    </div>
 		  </div>
@@ -42,23 +44,28 @@
 <div class="row">
   	<div class="col-md-12">
 	<!-- content start -->
-	<p class="text-right">
-		<a class="btn btn-primary" href="add.bit" role="button">입력</a>
-	</p>
-	<div class="list-group">
-	  <a href="#" class="list-group-item disabled">
-	  	<h4 class="list-group-item-heading">사번 - 이름</h4>
-		<p class="list-group-item-text">날짜</p>
-	  </a>
-	  <c:forEach items="${list }" var="bean">
-	  <a href="#" class="list-group-item">
-	  	<span class="badge">${bean.pay }</span>
-	  	<h4 class="list-group-item-heading">${bean.sabun} - ${bean.name}</h4>
-	  	<fmt:formatDate value="${bean.nalja }" pattern="YYYY/MM/dd hh:mm" var="nal"/>
-		<p class="list-group-item-text">${nal }</p>
-	  </a>
-	  </c:forEach>
-	</div>
+	
+	<form class="form-horizontal" action="result.bit" method="post">
+		<div class="form-group">
+		    <label for="sabun" class="col-sm-2 control-label">sabun</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" name="sabun" id="sabun" placeholder="sabun">
+		    </div>
+		</div>
+		
+		<div class="form-group">
+		    <label for="name" class="col-sm-2 control-label">name</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" name="name" id="name" placeholder="name">
+		    </div>
+		</div>
+		
+		<div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <button type="submit" class="btn btn-default">Sign in</button>
+		    </div>
+		</div>
+	</form>	
 	
 	<!-- content end -->
 	</div>

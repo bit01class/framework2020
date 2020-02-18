@@ -13,6 +13,9 @@
 				<prop key="/dept/delete.bit">ddel</prop>
 				<prop key="/emp/list.bit">elist</prop>
 				<prop key="/emp/add.bit">eadd</prop>
+				<prop key="/emp/insert.bit">einsert</prop>
+				<prop key="/login.bit">login</prop>
+				<prop key="/result.bit">result</prop>
 			</props>
 		</property>
 	</bean>
@@ -40,6 +43,20 @@
 	<bean id="eadd"
 	class="com.bit.controller.EmpAddController">
 		<property name="dao" ref="dept01Dao2"></property>
+	</bean>
+	<bean id="einsert"
+	class="com.bit.controller.EmpInsertController">
+		<property name="dao" ref="empDao"></property>
+	</bean>
+	
+	<bean id="login"
+	class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="login/login"></property>
+	</bean>
+	
+	<bean id="result"
+	class="com.bit.controller.LoginController">
+		<property name="dao" ref="empDao"></property>
 	</bean>
 	
 	

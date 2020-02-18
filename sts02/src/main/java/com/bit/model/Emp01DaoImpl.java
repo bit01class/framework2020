@@ -12,14 +12,23 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.bit.model.entity.Emp01Vo;
 
 public class Emp01DaoImpl implements Emp01Dao {
 	JdbcTemplate jdbcTemplate;
+	PlatformTransactionManager transactionManager; 
 	
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	public void setTransactionManager(PlatformTransactionManager transactionManager) {
+		this.transactionManager = transactionManager;
 	}
 
 	@Override
@@ -61,9 +70,44 @@ public class Emp01DaoImpl implements Emp01Dao {
 	}
 
 	@Override
-	public void insertOne(Emp01Vo bean) throws SQLException {
-		// TODO Auto-generated method stub
-
+	public void insertOne(final Emp01Vo bean) throws SQLException {
+		final String sql="insert into emp01 (name,nalja,pay,deptno) values (?,now(),?,?)";
+		TransactionDefinition definition=null;
+		definition=new DefaultTransactionDefinition();
+		TransactionStatus status = null;
+		status=transactionManager.getTransaction(definition);
+		try {
+		PreparedStatementCreator psc=new PreparedStatementCreator() {
+			
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement pstmt=null;
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, bean.getName());
+				pstmt.setInt(2, bean.getPay());
+				pstmt.setInt(3, bean.getDeptno());
+				return pstmt;
+			}
+		};
+		jdbcTemplate.update(psc);
+		psc=new PreparedStatementCreator() {
+			
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement pstmt=null;
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, bean.getName());
+				pstmt.setInt(2, bean.getPay());
+				pstmt.setInt(3, bean.getDeptno());
+				return pstmt;
+			}
+		};
+		jdbcTemplate.update(psc);
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			// rollback
+			transactionManager.rollback(status);
+		}
 	}
 
 	@Override
@@ -78,4 +122,17 @@ public class Emp01DaoImpl implements Emp01Dao {
 		return 0;
 	}
 
+	@Override
+	public boolean loginCheck(int sabun, String name) {
+		String sql="select count(*) from emp01 where sabun=? and name=?";
+		int result=jdbcTemplate.queryForInt(sql,new Object[] {sabun,name});
+		if(result>0)return true;
+		return false;
+	}
+
 }
+
+
+
+
+

@@ -27,6 +27,14 @@
 		        <div>비트교육센터</div>
 		      </a>
 		    </div>
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			    <ul class="nav navbar-nav">
+			        <li><a href="/sts02/">HOME</a></li>
+			        <li><a href="/sts02/dept/list.bit">DEPT</a></li>
+			        <li class="active"><a href="/sts02/emp/list.bit">E M P</a></li>
+			        <li><a href="/sts02/login.bit">LOGIN</a></li>
+			    </ul>
+		    </div>
 		  </div>
 		</nav>
   	</div>
@@ -35,7 +43,7 @@
   	<div class="col-md-12">
 	<!-- content start -->
 	
-	<form class="form-horizontal">
+	<form class="form-horizontal" action="insert.bit" method="post">
 		<div class="form-group">
 		    <label for="name" class="col-sm-2 control-label">name</label>
 		    <div class="col-sm-10">
