@@ -11,6 +11,7 @@
 				<prop key="/dept/list.bit">dlist</prop>
 				<prop key="/dept/add.bit">dadd</prop>
 				<prop key="/dept/delete.bit">ddel</prop>
+				<prop key="/emp/list.bit">elist</prop>
 			</props>
 		</property>
 	</bean>
@@ -29,6 +30,12 @@
 		<property name="supportedMethods" value="POST"></property>
 		<property name="dao" ref="dept01Dao2"></property>
 	</bean>
+	
+	<bean id="elist" 
+	class="com.bit.controller.EmpListController">
+		<property name="dao" ref="empDao"></property>
+	</bean>
+	
 	
 	<!-- viewResolver -->
 	<bean id="viewResolver"

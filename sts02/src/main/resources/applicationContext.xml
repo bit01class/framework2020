@@ -23,6 +23,10 @@
 	<bean id="dept01Dao2" class="com.bit.model.Dept01Dao2Impl">
 		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
 	</bean>
+	
+	<bean id="empDao" class="com.bit.model.Emp01DaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+	</bean>
 
 </beans>
 
