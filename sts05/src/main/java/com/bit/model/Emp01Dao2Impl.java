@@ -3,19 +3,23 @@ package com.bit.model;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.orm.ibatis.SqlMapClientTemplate;
+
 import com.bit.model.entity.Emp01Vo;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 public class Emp01Dao2Impl implements Emp01Dao {
-	SqlMapClient sqlMapClient;
+	SqlMapClientTemplate sqlMapClientTemplate;
 	
-	public void setSqlMapClient(SqlMapClient sqlMapClient) {
-		this.sqlMapClient = sqlMapClient;
+	public void setSqlMapClientTemplate(SqlMapClientTemplate sqlMapClientTemplate) {
+		this.sqlMapClientTemplate = sqlMapClientTemplate;
 	}
 
 	@Override
 	public List<Emp01Vo> selectAll() throws SQLException {
-		return sqlMapClient.queryForList("selectAll");
+		List<Emp01Vo> list=null;
+		list=sqlMapClientTemplate.queryForList("selectAll");
+		return list;
 	}
 
 	@Override
