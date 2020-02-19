@@ -6,6 +6,9 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<script type="text/javascript">
+	window.location.replace("home.bit");
+	</script>
 </head>
 <body>
 <h2>Hello World!</h2>
